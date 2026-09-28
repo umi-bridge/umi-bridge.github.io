@@ -28,3 +28,17 @@
 .chart-grid + .experiment{margin-top:36px}
 .performance-figure{margin-bottom:36px}
 @media(max-width:620px){.chart-grid + .experiment{margin-top:28px}.performance-figure{margin-bottom:28px}}
+
+/* Task transfer results: one chart, with a compact introduction on a white background. */
+#transfer{padding-bottom:44px}
+.transfer-results{padding:48px 0 64px;background:var(--white);scroll-margin-top:0}
+.transfer-results h3{font-size:24px;font-weight:600;line-height:1.4;letter-spacing:-.45px}
+.transfer-results-copy{margin-top:12px;color:var(--muted);font-size:16px;line-height:1.75;text-align:left;text-wrap:pretty}
+.transfer-results .paper-figure{max-width:760px;margin:28px auto 0}
+@media(max-width:620px){
+  #transfer{padding-bottom:32px}
+  .transfer-results{padding:32px 0 40px}
+  .transfer-results h3{font-size:23px;letter-spacing:-.35px}
+  .transfer-results-copy{font-size:14px;line-height:1.75}
+  .transfer-results .paper-figure{margin-top:22px}
+}

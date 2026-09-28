@@ -56,11 +56,14 @@
           <p class="video-note" id="transfer-note">Selected execution with a paper cup absent from our training demonstrations. Demonstration and execution were recorded separately.</p>
           <p class="playback-status visually-hidden" role="status"></p>
         </div>
-        <div class="result-split">
-          <h3>New tasks, without target-task robot demonstrations.</h3>
-          <div class="result-copy"><div class="stat-pair"><div><strong>85<span>%</span></strong><span>Cup placement</span></div><div><strong>90<span>%</span></strong><span>Snack placement</span></div></div><p>Training uses UMI demonstrations of the target tasks. Each policy is evaluated over 20 rollouts per task.</p></div>
-          <figure class="paper-figure"><button class="figure-button" data-zoom="assets/images/transfer.png" aria-label="Enlarge task transfer results"><img src="assets/images/transfer.png" alt="Task transfer success rates: UMI-only 45% and 50%, Naive Co-training 60% and 75%, UMI-Bridge 85% and 90%, on cup and snack placement respectively." loading="lazy" width="2400" height="1840"></button></figure>
-        </div>
+      </div>
+    </section>
+
+    <section id="transfer-results" class="transfer-results" aria-labelledby="transfer-results-title">
+      <div class="wrap">
+        <h3 id="transfer-results-title">New tasks, without target-task robot demonstrations.</h3>
+        <p class="transfer-results-copy">Training uses UMI demonstrations of the target tasks. Each policy is evaluated over 20 rollouts per task.</p>
+        <figure class="paper-figure"><button class="figure-button" data-zoom="assets/images/transfer.png" aria-label="Enlarge task transfer results"><img src="assets/images/transfer.png" alt="Task transfer success rates: UMI-only 45% and 50%, Naive Co-training 60% and 75%, UMI-Bridge 85% and 90%, on cup and snack placement respectively." loading="lazy" width="2400" height="1840"></button></figure>
       </div>
     </section>
 
