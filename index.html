@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UMI-Bridge connects human manipulation data and robot policy learning through action-anchored latent alignment.">
+  <meta name="theme-color" content="#087f79">
+  <meta property="og:title" content="UMI-Bridge">
+  <meta property="og:description" content="Action-Anchored Latent Alignment across Human and Robot Manipulation Data">
+  <meta property="og:type" content="website">
+  <title>UMI-Bridge · Action-Anchored Latent Alignment</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#abstract">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="wordmark" href="#top">UMI<span>–</span>Bridge</a>
+      <div class="nav-links"><a href="#abstract">Abstract</a><a href="#transfer">Results</a><a href="#method">Method</a><a href="#citation">Citation</a></div>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="paper-title">
+      <h1 id="paper-title"><span class="project-name">UMI-Bridge</span><span class="paper-title">Action-Anchored Latent Alignment across Human and Robot Manipulation Data</span></h1>
+      <div class="authors" aria-label="Authors">
+        <span>Haiyi Liu<sup>1</sup></span><span>Jinming Ma<sup>2,†,‡</sup></span><span>Ke Rui<sup>2</sup></span><span>Yuteng Wei<sup>2</sup></span><span>Yuan Ma<sup>2</sup></span><span>Yushen Zuo<sup>2</sup></span><span>Honglong Tian<sup>2</sup></span><span>Haoran Jia<sup>2</sup></span><span>Weitao Zhou<sup>2</sup></span><span>Jiawei Wang<sup>2</sup></span><span>Shiyi Chen<sup>1</sup></span><span>Haiyan Mao<sup>1</sup></span><span>Jiaqi Zhang<sup>1</sup></span><span>Chun Zhang<sup>1</sup></span><span>Minglei Li<sup>2,‡</sup></span>
+      </div>
+      <p class="affiliations"><span><sup>1</sup> Tsinghua University</span><span><sup>2</sup> Simple AI</span></p>
+      <p class="author-notes"><sup>†</sup> Project lead &nbsp; <sup>‡</sup> Corresponding authors</p>
+      <div class="resource-links">
+        <a class="button primary" href="paper.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+        <a class="button" href="https://arxiv.org/abs/2609.18232" target="_blank" rel="noopener"><span aria-hidden="true" class="arxiv-icon">α</span>arXiv<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a class="button" href="#video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>Video</a>
+      </div>
+      <figure class="hero-video" id="video">
+        <video id="overview-video" controls playsinline preload="metadata" poster="assets/images/hero-poster.jpg" aria-label="UMI-Bridge full three-minute research video"><source src="assets/videos/hero.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/hero.mp4">Open the full video.</a></video>
+      </figure>
+    </section>
+
+    <section id="abstract" class="section wrap" aria-labelledby="abstract-title">
+      <div class="section-heading centered"><h2 id="abstract-title">Abstract</h2></div>
+      <p class="overview-copy reading-width">Real-robot demonstrations are limited, motivating the use of human manipulation data collected without robots, including egocentric videos and handheld Universal Manipulation Interface (UMI) demonstrations. However, differences in viewpoint, embodiment, and available action supervision make it difficult to align representations across these sources according to manipulation motion rather than visual appearance. We introduce <span class="keep-together">UMI-Bridge</span>, which uses UMI as an intermediate domain to align representations according to action equivalence rather than pixel similarity. UMI action supervision anchors the latent representation to end-effector motion and gripper behavior, while synchronized head–wrist observations and paired ego–UMI clips support alignment across views and domains. We train a dual-view latent action model (LAM) on human manipulation data without robot demonstrations, then freeze its wrist teacher and dynamics model to regularize vision-language-action (VLA) post-training on UMI and robot data. The shared wrist interface enables this training-time supervision across both domains while preserving the policy's standard inference architecture. Across three real-robot tasks, <span class="keep-together">UMI-Bridge</span> achieves 91.7% mean success versus 73.3% for Naive Co-training with matched UMI and robot data. On two data-efficiency tasks, it surpasses a full-data Robot-only baseline using 25% of the robot demonstrations together with UMI data. It also achieves 85% and 90% success on two additional tasks learned from UMI demonstrations without task-specific robot demonstrations. These results support action-anchored latent alignment for data-efficient robot learning and UMI-to-robot task transfer.</p>
+      <figure class="paper-figure overview-figure"><button class="figure-button" data-zoom="assets/images/overview.png" aria-label="Enlarge the UMI-Bridge overview figure"><img src="assets/images/overview.png" alt="UMI acts as an action-anchored bridge connecting egocentric human observations with robot policy learning." loading="lazy" width="2400" height="1387"></button></figure>
+    </section>
+
+    <section id="transfer" class="section section-tinted" aria-labelledby="transfer-title">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">01 / Task transfer</p><h2 id="transfer-title">Demonstrate with UMI and execute with a robot.</h2><p>Learn a target task from UMI demonstrations.</p></div>
+        <div class="experiment" data-experiment="transfer">
+          <div class="experiment-toolbar"><div class="tabs" role="tablist" aria-label="Transfer example"><button id="transfer-tab-cup" role="tab" aria-selected="true" aria-controls="transfer-panel" data-key="cup" tabindex="0">Cup placement</button><button id="transfer-tab-gum" role="tab" aria-selected="false" aria-controls="transfer-panel" data-key="gum" tabindex="-1">Snack · Gum</button><button id="transfer-tab-candy" role="tab" aria-selected="false" aria-controls="transfer-panel" data-key="candy" tabindex="-1">Snack · Candy box</button></div><button class="play-together" data-play-group="transfer"><span aria-hidden="true">▶</span> Play both</button></div>
+          <div id="transfer-panel" role="tabpanel" aria-labelledby="transfer-tab-cup" class="video-grid two transfer-videos">
+            <figure class="video-figure"><figcaption><span>UMI demonstration</span><span class="method-tag">Target task</span></figcaption><div class="video-frame umi-frame"><video controls muted playsinline preload="none" data-slot="umi" src="assets/videos/transfer-cup-umi.mp4" poster="assets/images/transfer-cup-umi.jpg" aria-label="UMI cup placement demonstration"></video><span class="speed-badge" aria-hidden="true">1×</span></div></figure>
+            <figure class="video-figure"><figcaption><span>Robot execution</span><span class="method-tag ours-tag">UMI-Bridge</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" data-slot="ours" src="assets/videos/transfer-cup-ours.mp4" poster="assets/images/transfer-cup-ours.jpg" aria-label="UMI-Bridge robot cup placement execution"></video><span class="speed-badge" aria-hidden="true">Variable speed</span></div></figure>
+          </div>
+          <p class="video-note" id="transfer-note">Selected execution with a paper cup absent from our training demonstrations. Demonstration and execution were recorded separately.</p>
+          <p class="playback-status visually-hidden" role="status"></p>
+        </div>
+        <div class="result-split">
+          <h3>New tasks, without target-task robot demonstrations.</h3>
+          <div class="result-copy"><div class="stat-pair"><div><strong>85<span>%</span></strong><span>Cup placement</span></div><div><strong>90<span>%</span></strong><span>Snack placement</span></div></div><p>Training uses UMI demonstrations of the target tasks. Each policy is evaluated over 20 rollouts per task.</p></div>
+          <figure class="paper-figure"><button class="figure-button" data-zoom="assets/images/transfer.png" aria-label="Enlarge task transfer results"><img src="assets/images/transfer.png" alt="Task transfer success rates: UMI-only 45% and 50%, Naive Co-training 60% and 75%, UMI-Bridge 85% and 90%, on cup and snack placement respectively." loading="lazy" width="2400" height="1840"></button></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="efficiency" class="section wrap" aria-labelledby="efficiency-title">
+      <div class="section-heading"><p class="eyebrow">02 / Robot data efficiency</p><h2 id="efficiency-title">Learning with fewer robot demonstrations.</h2><p>With a fixed UMI dataset, <span class="keep-together">UMI-Bridge</span> uses 25% of the robot demonstrations to achieve <strong>77.5%</strong> mean success across Stain Wiping and Produce Sorting. Robot-only training with the full robot dataset reaches <strong>62.5%</strong>.</p></div>
+      <div class="chart-grid"><figure class="paper-figure"><button class="figure-button" data-zoom="assets/images/efficiency-wiping.png" aria-label="Enlarge Stain Wiping data efficiency results"><img src="assets/images/efficiency-wiping.png" alt="Stain Wiping: at 25%, 50%, and 100% robot data, UMI-Bridge achieves 65%, 75%, and 90% success; Robot-only achieves 25%, 35%, and 60%." loading="lazy" width="2400" height="2300"></button></figure><figure class="paper-figure"><button class="figure-button" data-zoom="assets/images/efficiency-sorting.png" aria-label="Enlarge Produce Sorting data efficiency results"><img src="assets/images/efficiency-sorting.png" alt="Produce Sorting: at 25%, 50%, and 100% robot data, UMI-Bridge achieves 90%, 85%, and 100% success; Robot-only achieves 45%, 60%, and 65%." loading="lazy" width="2400" height="2300"></button></figure></div>
+      <div class="experiment" data-experiment="efficiency"><div class="experiment-toolbar"><h3 class="experiment-title">Produce Sorting · Selected rollouts</h3><button class="play-together" data-play-group="efficiency"><span aria-hidden="true">▶</span> Play both</button></div><div class="video-grid two"><figure class="video-figure"><figcaption><span>Robot-only</span><span class="method-tag">100% robot data</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" src="assets/videos/efficiency-robot-full.mp4" poster="assets/images/efficiency-robot-full.jpg" aria-label="Robot-only Produce Sorting with full robot dataset"></video><span class="speed-badge" aria-hidden="true">3.2×</span></div></figure><figure class="video-figure"><figcaption><span>UMI-Bridge</span><span class="method-tag ours-tag">25% robot data + UMI</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" src="assets/videos/efficiency-ours-quarter.mp4" poster="assets/images/efficiency-ours-quarter.jpg" aria-label="UMI-Bridge Produce Sorting with one quarter of robot dataset and fixed UMI data"></video><span class="speed-badge" aria-hidden="true">Variable speed</span></div></figure></div><p class="playback-status visually-hidden" role="status"></p></div>
+    </section>
+
+    <section id="performance" class="section section-tinted" aria-labelledby="performance-title">
+      <div class="wrap"><div class="section-heading"><p class="eyebrow">03 / Real-robot performance</p><h2 id="performance-title">Action grounding matters.</h2><p>With matched UMI and robot training data, <span class="keep-together">UMI-Bridge</span> achieves <strong>91.7%</strong> mean success across Stain Wiping, Shirt Folding, and Produce Sorting.</p></div>
+        <figure class="paper-figure performance-figure"><button class="figure-button" data-zoom="assets/images/performance.png" aria-label="Enlarge real-robot performance results"><img src="assets/images/performance.png" alt="Across Stain Wiping, Shirt Folding, and Produce Sorting, mean success is 73.3% for Naive Co-training, 53.3% for Dynamics-Only LAM, and 91.7% for UMI-Bridge." loading="lazy" width="2400" height="2214"></button></figure>
+        <div class="experiment" data-experiment="performance"><div class="experiment-toolbar"><div class="tabs" role="tablist" aria-label="Robot performance task"><button id="performance-tab-folding" role="tab" aria-selected="true" aria-controls="performance-panel" data-key="folding" tabindex="0">Shirt Folding</button><button id="performance-tab-wiping" role="tab" aria-selected="false" aria-controls="performance-panel" data-key="wiping" tabindex="-1">Stain Wiping</button><button id="performance-tab-sorting" role="tab" aria-selected="false" aria-controls="performance-panel" data-key="sorting" tabindex="-1">Produce Sorting</button></div><button class="play-together" data-play-group="performance"><span aria-hidden="true">▶</span> Play all</button></div>
+          <div id="performance-panel" role="tabpanel" aria-labelledby="performance-tab-folding" class="video-grid three">
+            <figure class="video-figure"><figcaption><span>Naive Co-training</span><span class="success-rate" data-rate="naive">60%</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" data-slot="naive" src="assets/videos/performance-folding-naive.mp4" poster="assets/images/performance-folding-naive.jpg" aria-label="Naive Co-training selected Shirt Folding rollout"></video><span class="speed-badge" aria-hidden="true">Variable speed</span></div></figure>
+            <figure class="video-figure"><figcaption><span>Dynamics-Only LAM</span><span class="success-rate" data-rate="dynamics">20%</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" data-slot="dynamics" src="assets/videos/performance-folding-dynamics.mp4" poster="assets/images/performance-folding-dynamics.jpg" aria-label="Dynamics-Only LAM selected Shirt Folding rollout"></video><span class="speed-badge" aria-hidden="true">Variable speed</span></div></figure>
+            <figure class="video-figure"><figcaption><span>UMI-Bridge</span><span class="success-rate ours-rate" data-rate="ours">85%</span></figcaption><div class="video-frame"><video controls muted playsinline preload="none" data-slot="ours" src="assets/videos/performance-folding-ours.mp4" poster="assets/images/performance-folding-ours.jpg" aria-label="UMI-Bridge selected Shirt Folding rollout"></video><span class="speed-badge" aria-hidden="true">Variable speed</span></div></figure>
+          </div><p class="playback-status visually-hidden" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section wrap" aria-labelledby="method-title"><div class="section-heading"><p class="eyebrow">04 / Method</p><h2 id="method-title">Learn the representation and guide the policy.</h2><p>Two training stages connect human manipulation data to a standard robot policy.</p></div>
+      <figure class="paper-figure method-figure"><button class="figure-button" data-zoom="assets/images/method.png" aria-label="Enlarge the two-stage UMI-Bridge method diagram"><img src="assets/images/method.png" alt="Stage 1 trains a latent action model with UMI action supervision and cross-view and cross-domain alignment. Stage 2 freezes the wrist teacher and dynamics model for auxiliary supervision of the policy. Auxiliary components are removed at deployment." loading="lazy" width="2400" height="1023"></button><figcaption>Click the diagram to explore the training pipeline.</figcaption></figure>
+      <div class="method-steps"><div><span class="step-label">Stage 1</span><h3>Learn action-anchored latents.</h3><p>UMI actions anchor latent representations to manipulation motion. Latent exchange links synchronized views and paired human–UMI videos.</p></div><div><span class="step-label">Stage 2</span><h3>Supervise policy learning.</h3><p>A frozen wrist teacher and dynamics model supervise auxiliary latent predictions from the policy’s high-level vision-language model features.</p></div><div><span class="step-label">Deployment</span><h3>Use the standard policy.</h3><p>The policy predicts actions from observations, instructions, and proprioceptive state. Auxiliary training components are removed.</p></div></div>
+      <details class="data-details"><summary>See the human–UMI correspondence<span aria-hidden="true">+</span></summary><div class="details-content"><p>Two separately recorded demonstrations, aligned using dynamic time warping (DTW).</p><div class="experiment" data-experiment="paired"><div class="experiment-toolbar"><h3 class="experiment-title">Paired manipulation experience</h3><button class="play-together" data-play-group="paired"><span aria-hidden="true">▶</span> Play both</button></div><div class="video-grid two"><figure class="video-figure"><figcaption>Egocentric human video</figcaption><div class="video-frame"><video controls muted playsinline preload="none" src="assets/videos/paired-ego.mp4" poster="assets/images/paired-ego.jpg" aria-label="Human demonstration aligned by dynamic time warping"></video><span class="speed-badge" aria-hidden="true">DTW-aligned · Variable speed</span></div></figure><figure class="video-figure"><figcaption>UMI demonstration</figcaption><div class="video-frame"><video controls muted playsinline preload="none" src="assets/videos/paired-umi.mp4" poster="assets/images/paired-umi.jpg" aria-label="UMI demonstration aligned by dynamic time warping"></video><span class="speed-badge" aria-hidden="true">DTW-aligned · Variable speed</span></div></figure></div><p class="playback-status visually-hidden" role="status"></p></div></div></details>
+    </section>
+
+    <section id="citation" class="section citation-section"><div class="wrap"><div class="citation-heading"><div><p class="eyebrow">Reference</p><h2>Citation</h2></div><button id="copy-citation" class="button small">Copy BibTeX</button></div><pre><code id="bibtex">@misc{liu2026umibridge,
+  title = {{UMI-Bridge}: Action-Anchored Latent Alignment across Human and Robot Manipulation Data},
+  author = {Haiyi Liu and Jinming Ma and Ke Rui and Yuteng Wei and Yuan Ma and Yushen Zuo and Honglong Tian and Haoran Jia and Weitao Zhou and Jiawei Wang and Shiyi Chen and Haiyan Mao and Jiaqi Zhang and Chun Zhang and Minglei Li},
+  year = {2026},
+  eprint = {2609.18232},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
+  url = {https://arxiv.org/abs/2609.18232}
+}</code></pre><p id="copy-status" class="visually-hidden" role="status"></p></div></section>
+  </main>
+  <footer class="site-footer wrap"><div><a class="wordmark" href="#top">UMI<span>–</span>Bridge</a><p>Contact <a href="mailto:majinming@simpleai.tech">Jinming Ma</a> · <a href="mailto:liminglei@simpleai.tech">Minglei Li</a></p></div><p class="credits">Layout inspired by <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged research figure"><button class="dialog-close" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button><img id="dialog-image" alt=""></dialog>
+</body>
+</html>
